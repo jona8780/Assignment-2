@@ -11,22 +11,26 @@ package assignment2;
  */
 public class Product {
     
-    private String name, type, code;
+    private String name, code;
     private int calories, quantity, maxQuantity;
     private double cost;
     
     /**
      * Creates a instance of a Product.
      * @param name
-     * @param type
      * @param code
      * @param calories
      * @param quantity
      * @param maxQuantity
      * @param cost 
      */
-    public Product(String name, String type, String code, int calories, int quantity, int maxQuantity, double cost) {
-        
+    public Product(String name, String code, int calories, int quantity, int maxQuantity, double cost) {
+        setName(name);
+        setCode(code);
+        setCalories(calories);
+        setQuantity(quantity);
+        setMaxQuantity(maxQuantity);
+        setCost(cost);
     }
 
     public String getName() {
@@ -37,20 +41,21 @@ public class Product {
         this.name = name;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public String getCode() {
         return code;
     }
 
     public void setCode(String code) {
-        this.code = code;
+        
+        if (code.length() == 2) {
+            code = code.toUpperCase();
+            if (code.matches("[A-Z][0-9]"))
+                this.code = code;
+            else
+                throw new IllegalArgumentException("Must be a valid code Ex.D4, A2");
+        }
+        else
+            throw new IllegalArgumentException("Must be 2 characters long");
     }
 
     public int getCalories() {
@@ -58,7 +63,11 @@ public class Product {
     }
 
     public void setCalories(int calories) {
-        this.calories = calories;
+        
+        if (calories >= 0)
+            this.calories = calories;
+        else
+            throw new IllegalArgumentException("Must not be less than 0");
     }
 
     public int getQuantity() {
@@ -66,7 +75,11 @@ public class Product {
     }
 
     public void setQuantity(int quantity) {
-        this.quantity = quantity;
+        
+        if (quantity <= maxQuantity && quantity >= 0)
+            this.quantity = quantity;
+        else
+            throw new IllegalArgumentException("Must be between 0 and max quantity");
     }
 
     public int getMaxQuantity() {
@@ -74,7 +87,11 @@ public class Product {
     }
 
     public void setMaxQuantity(int maxQuantity) {
-        this.maxQuantity = maxQuantity;
+        
+        if (maxQuantity > 0)
+            this.maxQuantity = maxQuantity;
+        else
+            throw new IllegalArgumentException("Must be greater than 0");
     }
 
     public double getCost() {
@@ -82,10 +99,14 @@ public class Product {
     }
 
     public void setCost(double cost) {
-        this.cost = cost;
+        
+        if (cost > 0)
+            this.cost = cost;
+        else
+            throw new IllegalArgumentException("Must be greater than 0");
     }
     
     public String toString() {
-        return name + " " + code + " is " + cost;
+        return code + " " + name + " is $" + cost;
     }
 }
