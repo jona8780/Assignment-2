@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>VendingMachine.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Assignment2&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">assignment2</a> &gt; <span class="el_source">VendingMachine.java</span></div><h1>VendingMachine.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package assignment2;
+
+import java.util.ArrayList;
+
+/**
+ *
+ * @author Jonah Jones
+ */
+public class VendingMachine {
+    
+    private int maxNumberOfProducts;
+    public ArrayList&lt;Product&gt; listOfProducts, listOfEmptyProducts;
+    
+<span class="fc" id="L19">    public VendingMachine(int maxNumberOfProducts ) {</span>
+        
+<span class="fc" id="L21">        setMaxNumberOfProducts(maxNumberOfProducts);</span>
+<span class="fc" id="L22">        listOfProducts = new ArrayList&lt;Product&gt;();</span>
+<span class="fc" id="L23">        listOfEmptyProducts = new ArrayList&lt;Product&gt;();</span>
+<span class="fc" id="L24">    }</span>
+    
+    public void addProduct(Product product) throws InvalidProductException {
+        
+
+<span class="fc bfc" id="L29" title="All 2 branches covered.">        if (listOfProducts.size() &lt; maxNumberOfProducts)</span>
+<span class="fc" id="L30">            listOfProducts.add(product);</span>
+        else
+<span class="fc" id="L32">            throw new InvalidProductException(&quot;You have reached the maximum number of products in the vending machine&quot;);</span>
+<span class="fc" id="L33">    }</span>
+    
+    public void addEmptyProduct(Product product) {
+        
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        if (product.getQuantity() == 0)</span>
+<span class="fc" id="L38">            listOfEmptyProducts.add(product);</span>
+        else
+<span class="fc" id="L40">            throw new IllegalArgumentException(&quot;Product must have a quantity of 0&quot;);</span>
+<span class="fc" id="L41">    }</span>
+    
+    public void refillEmptyProduct(Product product) {
+        
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        if (product.getQuantity() &gt; 0)</span>
+<span class="fc" id="L46">            listOfEmptyProducts.remove(product);</span>
+        else
+<span class="fc" id="L48">            throw new IllegalArgumentException(&quot;Product must have a quantity greater than 0&quot;);</span>
+<span class="fc" id="L49">    }</span>
+
+    public int getMaxNumberOfProducts() {
+<span class="fc" id="L52">        return maxNumberOfProducts;</span>
+    }
+
+    public void setMaxNumberOfProducts(int maxNumberOfProducts) {
+<span class="fc bfc" id="L56" title="All 2 branches covered.">        if (maxNumberOfProducts &gt; 0)</span>
+<span class="fc" id="L57">            this.maxNumberOfProducts = maxNumberOfProducts;</span>
+        else
+<span class="fc" id="L59">            throw new IllegalArgumentException(&quot;Max number of products must be greater than 0&quot;);</span>
+<span class="fc" id="L60">    }</span>
+    
+    public int getNumberOfProducts() {
+<span class="fc" id="L63">        return listOfProducts.size();</span>
+    }
+    
+    public int getNumberOfEmptyProducts() {
+<span class="fc" id="L67">        return listOfEmptyProducts.size();</span>
+    }
+    
+    public ArrayList&lt;Product&gt; getProducts() {
+<span class="fc" id="L71">        return listOfProducts;</span>
+    }
+    
+    public ArrayList&lt;Product&gt; getEmptyProducts() {
+<span class="fc" id="L75">        return listOfEmptyProducts;</span>
+    }
+    
+    public String showProductList() {
+        
+<span class="fc" id="L80">        String classList = &quot;&quot;;</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">        for(int i=0;i&lt;listOfProducts.size();i++)</span>
+        {
+<span class="fc" id="L83">            classList += String.format(&quot;%s%n&quot;,listOfProducts.get(i).toString());</span>
+        }
+        
+<span class="fc" id="L86">        return classList;</span>
+    }
+    
+    public String showEmptyProductList() {
+        
+<span class="fc" id="L91">        String classList = &quot;&quot;;</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">        for(int i=0;i&lt;listOfEmptyProducts.size();i++)</span>
+        {
+<span class="fc" id="L94">            classList += String.format(&quot;%s%n&quot;,listOfEmptyProducts.get(i).toString());</span>
+        }
+        
+<span class="fc" id="L97">        return classList;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

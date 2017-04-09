@@ -24,12 +24,12 @@ public class Product {
      * @param maxQuantity
      * @param cost 
      */
-    public Product(String name, String code, int calories, int quantity, int maxQuantity, double cost) {
+    public Product(String name, String code, int calories, int maxQuantity, int quantity, double cost) {
         setName(name);
         setCode(code);
         setCalories(calories);
-        setQuantity(quantity);
         setMaxQuantity(maxQuantity);
+        setQuantity(quantity);
         setCost(cost);
     }
 
@@ -49,10 +49,10 @@ public class Product {
         
         if (code.length() == 2) {
             code = code.toUpperCase();
-            if (code.matches("[A-Z][0-9]"))
+            if (code.matches("[A-H][1-9]||10"))
                 this.code = code;
             else
-                throw new IllegalArgumentException("Must be a valid code Ex.D4, A2");
+                throw new IllegalArgumentException("Must be a valid code witha letter between A and H, and numbers between 1 and 10");
         }
         else
             throw new IllegalArgumentException("Must be 2 characters long");
@@ -107,6 +107,6 @@ public class Product {
     }
     
     public String toString() {
-        return code + " " + name + " is $" + cost;
+        return String.format("%s, %s's are $%.2f and have %s calories",code, name, cost, calories);
     }
 }
