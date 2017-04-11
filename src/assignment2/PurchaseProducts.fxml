@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="342.0" prefWidth="563.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="assignment2.PurchaseProductsController">
+<AnchorPane id="AnchorPane" prefHeight="342.0" prefWidth="589.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="assignment2.PurchaseProductsController">
    <children>
       <GridPane hgap="10.0" layoutX="14.0" layoutY="85.0" prefHeight="237.0" prefWidth="209.0" vgap="10.0">
         <columnConstraints>
@@ -58,34 +58,34 @@
          </opaqueInsets>
       </GridPane>
       <TextField fx:id="display" layoutX="18.0" layoutY="30.0" prefHeight="47.0" prefWidth="198.0" />
-      <HBox layoutX="237.0" layoutY="54.0" prefHeight="180.0" prefWidth="308.0" spacing="10.0">
+      <HBox layoutX="237.0" layoutY="54.0" prefHeight="180.0" prefWidth="343.0" spacing="10.0">
          <children>
-            <TableView prefHeight="180.0" prefWidth="232.0">
+            <TableView fx:id="tableView" prefHeight="180.0" prefWidth="198.0">
               <columns>
-                <TableColumn prefWidth="134.0" text="Name" />
-                <TableColumn prefWidth="61.0" text="Quantity" />
+                <TableColumn fx:id="nameColumn" prefWidth="134.0" text="Name" />
+                <TableColumn fx:id="quantityColumn" prefWidth="61.0" text="Quantity" />
               </columns>
             </TableView>
-            <VBox prefHeight="180.0" prefWidth="138.0">
+            <VBox prefHeight="180.0" prefWidth="128.0">
                <children>
                   <StackPane prefHeight="34.0" prefWidth="100.0">
                      <children>
-                        <Button fx:id="createNewProductButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="131.0" text="Create New Product" />
+                        <Button fx:id="createNewProductButton" mnemonicParsing="false" onAction="#createNewProductButtonPushed" prefHeight="25.0" prefWidth="131.0" text="Create New Product" />
                      </children>
                   </StackPane>
                   <StackPane prefHeight="34.0" prefWidth="100.0">
                      <children>
-                        <Button mnemonicParsing="false" text="View Details" />
+                        <Button fx:id="viewDetailButton" mnemonicParsing="false" onAction="#viewDetailsButtonPushed" text="View Details" />
                      </children>
                   </StackPane>
                   <StackPane prefHeight="34.0" prefWidth="100.0">
                      <children>
-                        <Button fx:id="restockButtone" mnemonicParsing="false" text="Refill Product" />
+                        <Button fx:id="restockButtone" mnemonicParsing="false" onAction="#restockButtonPushed" text="Refill Product" />
                      </children>
                   </StackPane>
                   <StackPane prefHeight="34.0" prefWidth="100.0">
                      <children>
-                        <Button fx:id="deleteProductButton" mnemonicParsing="false" text="Delete Product" />
+                        <Button fx:id="deleteProductButton" mnemonicParsing="false" onAction="#deleteButtonPushed" text="Delete Product" />
                      </children>
                   </StackPane>
                </children>
@@ -97,7 +97,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="237.0" layoutY="244.0" prefHeight="17.0" prefWidth="222.0">
+      <Label fx:id="infoField" layoutX="237.0" layoutY="244.0" prefHeight="17.0" prefWidth="222.0">
          <font>
             <Font size="16.0" />
          </font>
